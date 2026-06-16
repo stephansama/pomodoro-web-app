@@ -15,6 +15,7 @@ export function PhaseTabs() {
 
   return (
     <Tabs
+      className="w-full md:w-auto"
       value={phase}
       onValueChange={(v) => {
         const next = v as Phase;
