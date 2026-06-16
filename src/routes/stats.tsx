@@ -22,7 +22,7 @@ function StatsPage() {
       {hasSessions ? (
         <>
           <StatScoreCards />
-          <div className="chartgrid">
+          <div className="mb-[18px] grid grid-cols-[1.5fr_1fr] gap-[18px] max-[760px]:grid-cols-1">
             <DailyBarsChart />
             <WeeklyTrendChart />
           </div>

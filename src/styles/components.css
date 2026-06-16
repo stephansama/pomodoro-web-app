@@ -353,57 +353,11 @@
 }
 
 /* ---------- stats ---------- */
-.scards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-bottom: 18px;
-}
-@media (max-width: 680px) {
-  .scards {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-.scard {
-  background: var(--surface);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-card);
-  padding: 18px 20px;
-}
-.scard .lab {
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--muted-fg);
-  font-weight: 600;
-}
-.scard .big {
-  font-family: var(--font-mono);
-  font-size: 34px;
-  font-weight: 600;
-  margin-top: 6px;
-  line-height: 1;
-}
-.scard .big small {
-  font-size: 16px;
-  color: var(--muted-fg);
-}
-.scard .dl {
-  font-size: 13px;
-  margin-top: 7px;
-  font-weight: 600;
-}
-.chartgrid {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 18px;
-  margin-bottom: 18px;
-}
-@media (max-width: 760px) {
-  .chartgrid {
-    grid-template-columns: 1fr;
-  }
-}
+/* Score cards (.scards/.scard), the .chartgrid, and the donut .donutwrap/
+   .legend are Tailwind utilities in src/components/stats/* and routes/stats.tsx.
+   The .chartcard shell + its .ch/.t/.c header stay semantic since all three
+   charts reuse them. Recharts draws the graphs, so the old .bars/.scard .dl
+   rules were dead and have been removed. */
 .chartcard {
   background: var(--surface);
   border-radius: var(--radius);
@@ -427,44 +381,6 @@
   background: var(--surface-2);
   padding: 6px 12px;
   border-radius: var(--radius-pill);
-}
-.bars {
-  display: flex;
-  align-items: flex-end;
-  gap: 6px;
-  height: 170px;
-}
-.bars i {
-  flex: 1;
-  background: var(--focus);
-  border-radius: 5px 5px 0 0;
-  min-height: 5px;
-  transition: height 0.3s var(--ease);
-}
-.donutwrap {
-  display: flex;
-  align-items: center;
-  gap: 26px;
-  flex-wrap: wrap;
-}
-.legend {
-  display: flex;
-  flex-direction: column;
-  gap: 11px;
-  font-size: 14px;
-  flex: 1;
-  min-width: 160px;
-}
-.legend .row {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-}
-.legend .dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 3px;
-  flex: 0 0 auto;
 }
 
 /* ---------- settings ---------- */

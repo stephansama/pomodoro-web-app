@@ -36,7 +36,7 @@ export function PerTaskDonut() {
           <div className="ed">No focused time this week yet.</div>
         </div>
       ) : (
-        <div className="donutwrap">
+        <div className="flex flex-wrap items-center gap-[26px]">
           <ResponsiveContainer width={170} height={170}>
             <PieChart>
               <Pie
@@ -65,10 +65,13 @@ export function PerTaskDonut() {
               />
             </PieChart>
           </ResponsiveContainer>
-          <div className="legend">
+          <div className="flex min-w-[160px] flex-1 flex-col gap-[11px] text-sm">
             {data.slice(0, 6).map((d) => (
-              <div key={d.taskId} className="row">
-                <span className="dot" style={{ background: d.color }} />
+              <div key={d.taskId} className="flex items-center gap-[9px]">
+                <span
+                  className="size-3 shrink-0 rounded-[3px]"
+                  style={{ background: d.color }}
+                />
                 <span className="flex-1 truncate">{d.title}</span>
                 <span className="text-(--muted-fg) mono">
                   {formatDurationShort(d.focusMs)}
@@ -76,7 +79,7 @@ export function PerTaskDonut() {
               </div>
             ))}
             {data.length > 6 && (
-              <div className="row text-(--muted-fg) text-xs">
+              <div className="flex items-center gap-[9px] text-(--muted-fg) text-xs">
                 +{data.length - 6} more
               </div>
             )}
