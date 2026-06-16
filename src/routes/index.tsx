@@ -42,7 +42,7 @@ function TimerPage() {
 
   return (
     <div className="container narrow">
-      <section className="hero">
+      <section className="mx-auto flex w-full max-w-[560px] flex-col items-center gap-[clamp(24px,4vh,40px)] pt-[clamp(6px,3vh,30px)] max-md:gap-[clamp(18px,3vh,32px)] max-md:pt-0">
         <PhaseTabs />
         <TimerRing remainingMs={remaining} fullbleed={fullbleed} />
         <TimerControls fullbleed={fullbleed} />

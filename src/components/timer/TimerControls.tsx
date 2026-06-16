@@ -20,7 +20,7 @@ export function TimerControls({ fullbleed }: { fullbleed: boolean }) {
   const status = useTimer((s) => s.status);
 
   return (
-    <div className="herobtns">
+    <div className="flex flex-col items-center gap-[18px]">
       <Button
         variant={fullbleed ? "onwhite" : "primary"}
         running={status === "running"}
@@ -52,7 +52,7 @@ export function TimerControls({ fullbleed }: { fullbleed: boolean }) {
       </Button>
 
       {status !== "idle" && (
-        <div className="ctrlrow" role="group" aria-label="Session controls">
+        <div className="flex gap-[22px]" role="group" aria-label="Session controls">
           <button
             type="button"
             className="ctrlbtn"

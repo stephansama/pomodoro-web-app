@@ -136,16 +136,9 @@
 }
 
 /* ---------- timer hero ---------- */
-.hero {
-  width: 100%;
-  max-width: 560px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: clamp(24px, 4vh, 40px);
-  padding-top: clamp(6px, 3vh, 30px);
-}
+/* .hero layout lives in src/routes/index.tsx as Tailwind utilities. Only the
+   phase/fullbleed-sensitive tab + button surfaces keep semantic classes here so
+   their descendant selectors (.site.fullbleed .X) stay readable. */
 .herotabs {
   display: flex;
   gap: 8px;
@@ -199,31 +192,9 @@
   }
 }
 
-.heroring {
-  position: relative;
-  width: clamp(260px, 42vmin, 380px);
-  aspect-ratio: 1;
-}
-.heroring svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-.heronum {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.tnum {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: clamp(64px, 13vmin, 128px);
-  letter-spacing: -0.03em;
-  line-height: 1;
-}
+/* .heroring / .heronum / .tnum ring layout moved to Tailwind utilities in
+   src/components/timer/TimerRing.tsx (ring colors are driven by inline SVG
+   props, so nothing phase-sensitive lives here). */
 .tcap {
   font-size: 15px;
   color: var(--muted-fg);
@@ -233,12 +204,7 @@
   color: rgba(255, 255, 255, 0.78);
 }
 
-.herobtns {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 18px;
-}
+/* .herobtns layout moved to Tailwind utilities in TimerControls.tsx. */
 .pbtn {
   height: 60px;
   min-width: 240px;
@@ -268,10 +234,7 @@
   background: #fff;
   color: var(--accent);
 }
-.ctrlrow {
-  display: flex;
-  gap: 22px;
-}
+/* .ctrlrow layout moved to Tailwind utilities in TimerControls.tsx. */
 .ctrlbtn {
   width: 56px;
   height: 56px;
@@ -772,10 +735,6 @@
   .main {
     padding-top: clamp(16px, 2.5vh, 28px);
     padding-bottom: 96px;
-  }
-  .hero {
-    gap: clamp(18px, 3vh, 32px);
-    padding-top: 0;
   }
   .tabbar {
     display: flex;

@@ -20,8 +20,12 @@ export function TimerRing({ remainingMs, fullbleed }: Props) {
   const progColor = fullbleed ? "#ffffff" : "var(--accent)";
 
   return (
-    <div className="heroring" role="img" aria-label={`${formatClock(remainingMs)} remaining`}>
-      <svg viewBox={`0 0 ${SIZE} ${SIZE}`}>
+    <div
+      className="relative aspect-square w-[clamp(260px,42vmin,380px)]"
+      role="img"
+      aria-label={`${formatClock(remainingMs)} remaining`}
+    >
+      <svg viewBox={`0 0 ${SIZE} ${SIZE}`} className="block h-full w-full">
         <circle
           cx={SIZE / 2}
           cy={SIZE / 2}
@@ -44,8 +48,10 @@ export function TimerRing({ remainingMs, fullbleed }: Props) {
           style={{ transition: "stroke-dashoffset 0.35s var(--ease)" }}
         />
       </svg>
-      <div className="heronum">
-        <span className="tnum mono">{formatClock(remainingMs)}</span>
+      <div className="absolute inset-0 flex flex-col items-center justify-center">
+        <span className="font-mono text-[clamp(64px,13vmin,128px)] font-semibold leading-none tracking-[-0.03em] tabular-nums">
+          {formatClock(remainingMs)}
+        </span>
       </div>
     </div>
   );
