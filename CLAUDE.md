@@ -24,7 +24,16 @@ When the three docs disagree, the higher one wins:
 2. **`PLAN.md`** — owns the functional scaffold: data model, route names, timer behavior, PWA wiring.
 3. **`DESIGN.md`** — owns principles + a11y + keyboard shortcuts + empty-state coverage. Used to fill gaps the design HTML doesn't speak to.
 
-The repo's `src/styles/components.css` is a verbatim port of `Tomato.html`'s component CSS. **Don't restyle by editing component JSX class names** — change the CSS instead so the design contract stays intact.
+`src/styles/components.css` began as a verbatim port of `Tomato.html`'s component CSS and is being **migrated to Tailwind utilities** (see "Styling: hybrid Tailwind" below). The values in `Tomato.html` remain the visual truth — whether a surface is expressed as a semantic class in `components.css` or as utilities in JSX, the numbers (sizes, spacing, clamp curves, token colors) must match the design. When porting a rule to utilities, translate it 1:1; don't redesign it.
+
+### Styling: hybrid Tailwind
+
+Styling lives in two places, split by a deliberate rule:
+
+- **Tailwind utilities in JSX** for layout / spacing / typography and token-colored surfaces that aren't phase-coupled. Use the design tokens via the `(--token)` shorthand (e.g. `bg-(--surface)`, `text-(--muted-fg)`, `border-l-(--focus)`, `shadow-(--shadow-pop)`) or the `@theme`-bridged utilities (`bg-primary`, `text-card-foreground`). Never hardcode hex.
+- **Semantic classes in `components.css`** are kept for: (1) surfaces with `.site.fullbleed .X` inversion overrides (`.topnav`, `.navlink`, `.iconbtn`, `.tabbar`/`.tab`, `.footer`, `.htab`/`.herotabs`, `.pbtn*`, `.ctrlbtn`, `.activepick`, `.todayrow`); (2) the accent-driven `.switch` (`.switch.on` retints per phase); (3) classes shared across several components/routes (`.empty`, `.radio`, `.chartcard`+`.ch`/`.t`/`.c`, `.container`/`.pagehead`/`.h1`); (4) rules that lean on sibling/descendant selectors that are cleaner in CSS (`.srow + .srow` divider).
+
+When converting a stateful element, **swap** the variant classes (e.g. active vs inactive colors) rather than layering both — with utility classes the winner is decided by stylesheet source order, not `className` order, so layering can pick the wrong one. After any change, run `pnpm build` and confirm the arbitrary-value utilities actually landed in `dist/assets/*.css` (Tailwind only emits classes it can see in source).
 
 ## Architecture
 
@@ -48,7 +57,7 @@ Every accent-driven surface — nav active link, phase tabs, primary button, tim
 
 ### shadcn primitives are restyle wrappers
 
-`src/components/ui/*` uses Radix for behavior (focus traps, keyboard, ARIA) and the design's CSS class names (`.switch`, `.herotabs`, `.htab`, `.pbtn`, `.ctrlbtn`, …) for visuals. Adding a new primitive: write a thin Radix wrapper, then add component CSS to `src/styles/components.css` — don't reach for shadcn's stock Tailwind class strings.
+`src/components/ui/*` uses Radix for behavior (focus traps, keyboard, ARIA). For visuals they use either the design's semantic class names (`.switch`, `.herotabs`, `.htab`, `.pbtn`, `.ctrlbtn`, … — kept when fullbleed- or phase-coupled) or Tailwind utilities with the `(--token)` shorthand (e.g. `ui/input.tsx`). Adding a new primitive: write a thin Radix wrapper, then style it with utilities against the design tokens; only reach for a new semantic class in `components.css` when the surface needs `.site.fullbleed` overrides or is shared widely. Don't reach for shadcn's stock Tailwind class strings (they use a different token set).
 
 ### Timer engine is split in two
 

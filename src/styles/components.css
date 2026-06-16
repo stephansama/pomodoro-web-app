@@ -1,6 +1,9 @@
-/* Component classes ported from Tomato.html. Class names mirror the design's
-   original names so JSX in src/components/ uses .topnav, .tcard, .heroring,
-   etc. directly — no Tailwind rewrite. */
+/* Component classes ported from Tomato.html, now being migrated to Tailwind
+   utilities (see CLAUDE.md "Styling: hybrid Tailwind"). What remains here are
+   the surfaces that stay semantic on purpose: fullbleed-coupled (.site.fullbleed
+   .X), accent-driven (.switch), shared across routes (.empty, .radio, .chartcard,
+   .container/.pagehead/.h1), or reliant on sibling selectors (.srow + .srow).
+   Layout/typography for individual routes lives as utilities in their JSX. */
 
 /* ---------- top nav ---------- */
 .topnav {
