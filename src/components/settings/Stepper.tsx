@@ -1,4 +1,5 @@
-import { Minus, Plus } from "lucide-react";
+import IconMinus from "~icons/mdi/minus";
+import IconPlus from "~icons/mdi/plus";
 
 interface Props {
   value: number;
@@ -27,7 +28,7 @@ export function Stepper({
         disabled={value <= min}
         aria-label="Decrease"
       >
-        <Minus size={18} />
+        <IconMinus width={18} height={18} />
       </button>
       <b>{value}</b>
       <button
@@ -36,7 +37,7 @@ export function Stepper({
         disabled={value >= max}
         aria-label="Increase"
       >
-        <Plus size={18} />
+        <IconPlus width={18} height={18} />
       </button>
     </div>
   );

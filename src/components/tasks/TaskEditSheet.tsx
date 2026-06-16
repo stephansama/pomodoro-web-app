@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { Archive, ArchiveRestore, Trash2 } from "lucide-react";
+import IconArchive from "~icons/mdi/archive-outline";
+import IconArchiveRestore from "~icons/mdi/archive-arrow-up-outline";
+import IconTrash from "~icons/mdi/trash-can-outline";
 import {
   Sheet,
   SheetContent,
@@ -89,7 +91,7 @@ export function TaskEditSheet({ task, onOpenChange }: Props) {
                   onOpenChange(false);
                 }}
               >
-                <ArchiveRestore size={16} /> Restore
+                <IconArchiveRestore width={16} height={16} /> Restore
               </Button>
             ) : (
               <Button
@@ -99,7 +101,7 @@ export function TaskEditSheet({ task, onOpenChange }: Props) {
                   onOpenChange(false);
                 }}
               >
-                <Archive size={16} /> Archive
+                <IconArchive width={16} height={16} /> Archive
               </Button>
             )}
             <Button
@@ -115,7 +117,7 @@ export function TaskEditSheet({ task, onOpenChange }: Props) {
                 }
               }}
             >
-              <Trash2 size={16} /> Delete
+              <IconTrash width={16} height={16} /> Delete
             </Button>
           </div>
         </div>

@@ -1,11 +1,14 @@
 import { Link } from "@tanstack/react-router";
-import { BarChart3, ListChecks, Settings, Timer } from "lucide-react";
+import IconTimer from "~icons/mdi/timer-outline";
+import IconTasks from "~icons/mdi/format-list-checks";
+import IconStats from "~icons/mdi/chart-bar";
+import IconSettings from "~icons/mdi/cog-outline";
 
 const LINKS = [
-  { to: "/", label: "Timer", Icon: Timer, exact: true },
-  { to: "/tasks", label: "Tasks", Icon: ListChecks, exact: false },
-  { to: "/stats", label: "Stats", Icon: BarChart3, exact: false },
-  { to: "/settings", label: "Settings", Icon: Settings, exact: false },
+  { to: "/", label: "Timer", Icon: IconTimer, exact: true },
+  { to: "/tasks", label: "Tasks", Icon: IconTasks, exact: false },
+  { to: "/stats", label: "Stats", Icon: IconStats, exact: false },
+  { to: "/settings", label: "Settings", Icon: IconSettings, exact: false },
 ] as const;
 
 export function BottomTabBar() {
@@ -19,7 +22,7 @@ export function BottomTabBar() {
           activeProps={{ className: "tab active" }}
           activeOptions={{ exact }}
         >
-          <Icon size={20} aria-hidden="true" />
+          <Icon width={20} height={20} aria-hidden="true" />
           <span>{label}</span>
         </Link>
       ))}

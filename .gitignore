@@ -18,9 +18,6 @@ pnpm-debug.log*
 .env.local
 .env.*.local
 
-# TanStack Router — generated
-src/routeTree.gen.ts
-
 # TS build info
 *.tsbuildinfo
 node_modules/.tmp

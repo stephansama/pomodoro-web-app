@@ -1,4 +1,6 @@
-import { Monitor, Moon, Sun } from "lucide-react";
+import IconMonitor from "~icons/mdi/monitor";
+import IconMoon from "~icons/mdi/weather-night";
+import IconSun from "~icons/mdi/weather-sunny";
 import {
   Tooltip,
   TooltipContent,
@@ -22,7 +24,8 @@ const LABEL: Record<ThemeMode, string> = {
 export function ThemeToggle() {
   const theme = useSettings((s) => s.theme);
   const set = useSettings((s) => s.set);
-  const Icon = theme === "light" ? Sun : theme === "dark" ? Moon : Monitor;
+  const Icon =
+    theme === "light" ? IconSun : theme === "dark" ? IconMoon : IconMonitor;
   return (
     <TooltipProvider delayDuration={250}>
       <Tooltip>
@@ -33,7 +36,7 @@ export function ThemeToggle() {
             onClick={() => set("theme", NEXT[theme])}
             aria-label={LABEL[theme]}
           >
-            <Icon size={19} />
+            <Icon width={19} height={19} />
           </button>
         </TooltipTrigger>
         <TooltipContent>{LABEL[theme]}</TooltipContent>

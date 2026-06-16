@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Volume2 } from "lucide-react";
+import IconVolume from "~icons/mdi/volume-high";
 import { useSettings } from "@/stores/settings-store";
 import { useNotifications } from "@/hooks/use-notifications";
 import { SettingRow } from "@/components/settings/SettingRow";
@@ -146,7 +146,7 @@ function SettingsPage() {
               onClick={() => void playChime()}
               aria-label="Preview chime"
             >
-              <Volume2 size={16} /> Preview
+              <IconVolume width={16} height={16} /> Preview
             </Button>
             <Switch
               checked={s.soundEnabled}

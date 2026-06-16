@@ -1,9 +1,9 @@
-import { ListChecks } from "lucide-react";
+import IconList from "~icons/mdi/format-list-checks";
 
 export function TaskEmpty({ filter }: { filter: "active" | "archived" | "all" }) {
   return (
     <div className="empty">
-      <ListChecks size={36} aria-hidden="true" />
+      <IconList width={36} height={36} aria-hidden="true" />
       <div className="et">
         {filter === "archived"
           ? "Nothing archived yet"

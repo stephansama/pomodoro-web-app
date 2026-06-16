@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as RDialog from "@radix-ui/react-dialog";
-import { X } from "lucide-react";
+import IconClose from "~icons/mdi/close";
 import { cn } from "@/lib/cn";
 
 export const Sheet = RDialog.Root;
@@ -47,7 +47,7 @@ export const SheetContent = React.forwardRef<
         className="iconbtn absolute top-3 right-3"
         aria-label="Close"
       >
-        <X size={18} />
+        <IconClose width={18} height={18} />
       </RDialog.Close>
     </RDialog.Content>
   </RDialog.Portal>

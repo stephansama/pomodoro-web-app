@@ -1,4 +1,4 @@
-import { CloudOff } from "lucide-react";
+import IconCloudOff from "~icons/mdi/cloud-off-outline";
 import { useOnline } from "@/hooks/use-online";
 
 export function OfflineChip() {
@@ -6,7 +6,7 @@ export function OfflineChip() {
   if (online) return null;
   return (
     <span className="offchip" role="status" aria-live="polite">
-      <CloudOff size={13} />
+      <IconCloudOff width={13} height={13} />
       Offline · saving locally
     </span>
   );

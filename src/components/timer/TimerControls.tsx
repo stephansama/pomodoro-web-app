@@ -2,7 +2,10 @@ import { useTimer } from "@/stores/timer-store";
 import { useSettings } from "@/stores/settings-store";
 import { skipPhase, stopTimer } from "@/hooks/use-timer";
 import { Button } from "@/components/ui/button";
-import { Pause, Play, SkipForward, Square } from "lucide-react";
+import IconPause from "~icons/mdi/pause";
+import IconPlay from "~icons/mdi/play";
+import IconSkip from "~icons/mdi/skip-next";
+import IconStop from "~icons/mdi/stop";
 
 function plannedFor(
   phase: ReturnType<typeof useTimer.getState>["phase"],
@@ -35,15 +38,15 @@ export function TimerControls({ fullbleed }: { fullbleed: boolean }) {
       >
         {status === "running" ? (
           <>
-            <Pause size={18} /> Pause
+            <IconPause width={18} height={18} /> Pause
           </>
         ) : status === "paused" ? (
           <>
-            <Play size={18} /> Resume
+            <IconPlay width={18} height={18} /> Resume
           </>
         ) : (
           <>
-            <Play size={18} /> Start
+            <IconPlay width={18} height={18} /> Start
           </>
         )}
       </Button>
@@ -57,7 +60,7 @@ export function TimerControls({ fullbleed }: { fullbleed: boolean }) {
             aria-label="Skip phase"
             title="Skip"
           >
-            <SkipForward size={20} />
+            <IconSkip width={20} height={20} />
           </button>
           <button
             type="button"
@@ -69,7 +72,7 @@ export function TimerControls({ fullbleed }: { fullbleed: boolean }) {
             aria-label="Stop and discard"
             title="Stop"
           >
-            <Square size={18} />
+            <IconStop width={18} height={18} />
           </button>
         </div>
       )}

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Outlet, createRootRoute, useMatchRoute } from "@tanstack/react-router";
 import { TopNav } from "@/components/layout/TopNav";
 import { BottomTabBar } from "@/components/layout/BottomTabBar";
+import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/sonner";
 import { ShortcutSheet } from "@/components/ShortcutSheet";
 import { InstallPrompt } from "@/components/pwa/InstallPrompt";
@@ -36,6 +37,7 @@ function RootShell() {
       <main className="main">
         <Outlet />
       </main>
+      <Footer />
       <BottomTabBar />
       <Toaster />
       <ShortcutSheet open={help} onOpenChange={setHelp} />

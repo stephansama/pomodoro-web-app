@@ -1,6 +1,46 @@
 <!doctype html>
-<html lang="en" data-theme="light" data-phase="focus">
+<html lang="en">
   <head>
+    <script>
+      // Resolve persisted theme + phase before first paint so refreshing the
+      // page doesn't flash through the wrong palette. Mirrors the logic in
+      // src/hooks/use-theme.ts and src/hooks/use-phase.ts.
+      (function () {
+        try {
+          var settings = JSON.parse(
+            localStorage.getItem("tomato-settings") || "null",
+          );
+          var mode =
+            (settings && settings.state && settings.state.theme) || "system";
+          var theme =
+            mode === "system"
+              ? window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light"
+              : mode;
+
+          var timer = JSON.parse(
+            localStorage.getItem("tomato-timer") || "null",
+          );
+          var phase = (timer && timer.state && timer.state.phase) || "focus";
+
+          document.documentElement.setAttribute("data-theme", theme);
+          document.documentElement.setAttribute("data-phase", phase);
+
+          var themeColor =
+            phase === "short"
+              ? "#38858A"
+              : phase === "long"
+                ? "#397097"
+                : "#BA4949";
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute("content", themeColor);
+        } catch (_) {
+          document.documentElement.setAttribute("data-theme", "light");
+          document.documentElement.setAttribute("data-phase", "focus");
+        }
+      })();
+    </script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/icon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />

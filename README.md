@@ -37,7 +37,7 @@ It installs as a PWA — desktop or mobile — and works offline.
 | Recharts | Stats charts, themed against the same `--accent` tokens |
 | vite-plugin-pwa + Workbox | Service worker, manifest, install / update flows |
 | Sonner | Toasts (completion + update-ready) |
-| Lucide React | Icons |
+| unplugin-icons + @iconify/json | Build-time SVG icons (default collection `mdi`) |
 | date-fns | Day / week bucketing for stats |
 
 ## Local development

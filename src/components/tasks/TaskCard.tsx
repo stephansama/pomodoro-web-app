@@ -1,5 +1,5 @@
 import { useLiveQuery } from "dexie-react-hooks";
-import { Check } from "lucide-react";
+import IconCheck from "~icons/mdi/check";
 import type { Task } from "@/db/dexie";
 import { archiveTask, restoreTask } from "@/db/tasks";
 import { totalMsForTask } from "@/db/sessions";
@@ -28,7 +28,7 @@ export function TaskCard({ task, onEdit }: Props) {
         aria-label={done ? "Restore task" : "Archive (mark done)"}
         onClick={() => (done ? restoreTask(task.id) : archiveTask(task.id))}
       >
-        {done && <Check size={16} aria-hidden="true" />}
+        {done && <IconCheck width={16} height={16} aria-hidden="true" />}
       </button>
 
       <button

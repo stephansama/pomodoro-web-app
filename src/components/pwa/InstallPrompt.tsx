@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { X } from "lucide-react";
+import IconClose from "~icons/mdi/close";
 import { Button } from "@/components/ui/button";
 
 interface BeforeInstallPromptEvent extends Event {
@@ -53,7 +53,7 @@ export function InstallPrompt() {
         className="iconbtn absolute top-2 right-2"
         aria-label="Dismiss"
       >
-        <X size={18} />
+        <IconClose width={18} height={18} />
       </button>
       <div className="text-base font-semibold">Install Tomato</div>
       <div className="text-sm text-(--muted-fg)">

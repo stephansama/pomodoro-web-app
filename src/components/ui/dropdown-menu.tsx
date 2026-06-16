@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as RMenu from "@radix-ui/react-dropdown-menu";
-import { Check } from "lucide-react";
+import IconCheck from "~icons/mdi/check";
 import { cn } from "@/lib/cn";
 
 export const DropdownMenu = RMenu.Root;
@@ -83,7 +83,7 @@ export const DropdownMenuRadioItem = React.forwardRef<
   >
     <span className="absolute left-3 flex h-4 w-4 items-center justify-center text-(--accent)">
       <RMenu.ItemIndicator>
-        <Check size={14} />
+        <IconCheck width={14} height={14} />
       </RMenu.ItemIndicator>
     </span>
     {children}

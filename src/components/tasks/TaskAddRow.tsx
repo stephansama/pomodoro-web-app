@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Plus } from "lucide-react";
+import IconPlus from "~icons/mdi/plus";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { createTask } from "@/db/tasks";
@@ -25,7 +25,7 @@ export function TaskAddRow() {
         aria-label="Add a task"
       />
       <Button type="submit" variant="add" disabled={!value.trim()}>
-        <Plus size={18} /> Add
+        <IconPlus width={18} height={18} /> Add
       </Button>
     </form>
   );

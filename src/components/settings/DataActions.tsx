@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
-import { Download, Trash2 } from "lucide-react";
+import IconDownload from "~icons/mdi/download";
+import IconTrash from "~icons/mdi/trash-can-outline";
 import {
   Dialog,
   DialogContent,
@@ -34,10 +35,10 @@ export function DataActions() {
   return (
     <div className="flex flex-wrap gap-3">
       <Button variant="ghost" onClick={onExport}>
-        <Download size={16} /> Export JSON
+        <IconDownload width={16} height={16} /> Export JSON
       </Button>
       <Button variant="danger" onClick={() => setConfirmOpen(true)}>
-        <Trash2 size={16} /> Clear all data
+        <IconTrash width={16} height={16} /> Clear all data
       </Button>
 
       <Dialog open={confirmOpen} onOpenChange={setConfirmOpen}>
