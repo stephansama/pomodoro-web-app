@@ -181,6 +181,24 @@
   box-shadow: none;
 }
 
+/* On phones the three phase labels don't fit at their desktop padding, so the
+   pill grows past the viewport and the page scrolls sideways. Constrain the
+   bar to the column width and let the tabs share it evenly. */
+@media (max-width: 767px) {
+  .herotabs {
+    width: 100%;
+    gap: 4px;
+    padding: 4px;
+  }
+  .htab {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 10px 8px;
+    font-size: 14px;
+    text-align: center;
+  }
+}
+
 .heroring {
   position: relative;
   width: clamp(260px, 42vmin, 380px);
@@ -752,7 +770,12 @@
     display: none;
   }
   .main {
+    padding-top: clamp(16px, 2.5vh, 28px);
     padding-bottom: 96px;
+  }
+  .hero {
+    gap: clamp(18px, 3vh, 32px);
+    padding-top: 0;
   }
   .tabbar {
     display: flex;
