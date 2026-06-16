@@ -1,0 +1,79 @@
+/* Tomato design tokens — ported verbatim from Tomato.html.
+   The :root block defines lights; html[data-theme="dark"] flips the neutrals.
+   html[data-phase="*"] toggles --accent / --accent-soft so every accent-driven
+   surface re-tints when the timer phase changes. */
+
+:root {
+  --background: #fafaf7;
+  --surface: #ffffff;
+  --surface-2: #f4f4f0;
+  --border: #e7e5e0;
+  --foreground: #1a1a1a;
+  --muted-fg: #6b6b6b;
+
+  --focus: #ba4949;
+  --focus-soft: #f7e8e5;
+  --break: #38858a;
+  --break-soft: #e1f0f0;
+  --long: #397097;
+  --long-soft: #e4edf4;
+
+  --success: #3e8e5a;
+  --warning: #c77a2e;
+  --danger: #b23b3b;
+
+  --accent: #ba4949;
+  --accent-soft: var(--focus-soft);
+  --on-accent: #ffffff;
+
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 9999px;
+
+  --shadow-card: 0 1px 2px rgba(15, 15, 16, 0.05),
+    0 1px 1px rgba(15, 15, 16, 0.04);
+  --shadow-pop: 0 10px 28px rgba(15, 15, 16, 0.14),
+    0 2px 6px rgba(15, 15, 16, 0.06);
+
+  --font-ui: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --ease-emph: cubic-bezier(0.3, 0, 0, 1);
+
+  --nav-h: 64px;
+}
+
+html[data-theme="dark"] {
+  --background: #0f0f10;
+  --surface: #18181b;
+  --surface-2: #1f1f23;
+  --border: #27272a;
+  --foreground: #f4f4f5;
+  --muted-fg: #a1a1aa;
+
+  --focus-soft: #3a1f1f;
+  --break-soft: #1a3536;
+  --long-soft: #1b2d3d;
+
+  --success: #5bb07c;
+  --warning: #e0995b;
+  --danger: #d26565;
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-pop: 0 12px 32px rgba(0, 0, 0, 0.55);
+}
+
+html[data-phase="focus"] {
+  --accent: #ba4949;
+  --accent-soft: var(--focus-soft);
+}
+html[data-phase="short"] {
+  --accent: #38858a;
+  --accent-soft: var(--break-soft);
+}
+html[data-phase="long"] {
+  --accent: #397097;
+  --accent-soft: var(--long-soft);
+}
