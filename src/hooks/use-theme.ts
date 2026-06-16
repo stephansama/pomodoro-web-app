@@ -11,6 +11,11 @@ function resolve(mode: "system" | "light" | "dark"): "light" | "dark" {
 
 export function useTheme() {
   const theme = useSettings((s) => s.theme);
+  const palette = useSettings((s) => s.themePalette);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme-palette", palette);
+  }, [palette]);
 
   useEffect(() => {
     const apply = () =>

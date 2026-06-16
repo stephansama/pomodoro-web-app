@@ -2,22 +2,33 @@
 <html lang="en">
   <head>
     <script>
-      // Resolve persisted theme + phase before first paint so refreshing the
-      // page doesn't flash through the wrong palette. Mirrors the logic in
-      // src/hooks/use-theme.ts and src/hooks/use-phase.ts.
+      // Resolve persisted theme + palette + phase before first paint so the
+      // first painted frame already uses the right tokens. Mirrors the logic
+      // in src/hooks/use-theme.ts and src/hooks/use-phase.ts.
       (function () {
+        var THEME_COLOR = {
+          default: {
+            light: { focus: "#BA4949", short: "#38858A", long: "#397097" },
+            dark:  { focus: "#BA4949", short: "#38858A", long: "#397097" },
+          },
+          catppuccin: {
+            light: { focus: "#D20F39", short: "#179299", long: "#1E66F5" },
+            dark:  { focus: "#F38BA8", short: "#94E2D5", long: "#89B4FA" },
+          },
+        };
         try {
           var settings = JSON.parse(
             localStorage.getItem("tomato-settings") || "null",
           );
-          var mode =
-            (settings && settings.state && settings.state.theme) || "system";
+          var state = (settings && settings.state) || {};
+          var mode = state.theme || "system";
           var theme =
             mode === "system"
               ? window.matchMedia("(prefers-color-scheme: dark)").matches
                 ? "dark"
                 : "light"
               : mode;
+          var palette = state.themePalette || "default";
 
           var timer = JSON.parse(
             localStorage.getItem("tomato-timer") || "null",
@@ -25,18 +36,18 @@
           var phase = (timer && timer.state && timer.state.phase) || "focus";
 
           document.documentElement.setAttribute("data-theme", theme);
+          document.documentElement.setAttribute("data-theme-palette", palette);
           document.documentElement.setAttribute("data-phase", phase);
 
           var themeColor =
-            phase === "short"
-              ? "#38858A"
-              : phase === "long"
-                ? "#397097"
-                : "#BA4949";
+            (THEME_COLOR[palette] && THEME_COLOR[palette][theme] &&
+              THEME_COLOR[palette][theme][phase]) ||
+            "#BA4949";
           var meta = document.querySelector('meta[name="theme-color"]');
           if (meta) meta.setAttribute("content", themeColor);
         } catch (_) {
           document.documentElement.setAttribute("data-theme", "light");
+          document.documentElement.setAttribute("data-theme-palette", "default");
           document.documentElement.setAttribute("data-phase", "focus");
         }
       })();

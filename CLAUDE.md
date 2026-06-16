@@ -40,7 +40,7 @@ html[data-phase="long"]  { --accent: #397097; --accent-soft: var(--long-soft); }
 
 Every accent-driven surface — nav active link, phase tabs, primary button, timer ring stroke, task active border, Recharts bars/line — reads `var(--accent)` directly or through a `bg-primary`-style Tailwind utility. `src/hooks/use-phase.ts` is the only thing that should write this attribute (it also updates the `theme-color` meta tag). Never hardcode phase hex colors in components.
 
-`use-theme.ts` does the same for `html[data-theme="light|dark"]`, syncing to `settings-store.theme` and to the OS `prefers-color-scheme` when `theme === 'system'`.
+`use-theme.ts` does the same for `html[data-theme="light|dark"]` (syncs to `settings-store.theme` + OS `prefers-color-scheme`) and `html[data-theme-palette="default|catppuccin"]` (syncs to `settings-store.themePalette`). The two attributes combine: `tokens.css` keys Catppuccin Latte/Mocha blocks off `[data-theme-palette="catppuccin"][data-theme="light|dark"]`, so a Catppuccin user on `theme: system` flips Latte ↔ Mocha as their OS changes. `index.html` has an inline pre-paint script that resolves all three attrs from localStorage + a static palette/phase → hex lookup before the first frame, so refreshing never flashes through the wrong tokens.
 
 ### Tailwind v4 → design-token bridge
 

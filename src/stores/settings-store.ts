@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 export type ThemeMode = "system" | "light" | "dark";
+export type ThemePalette = "default" | "catppuccin";
 
 export interface SettingsState {
   focusMin: number;
@@ -13,6 +14,7 @@ export interface SettingsState {
   notificationsEnabled: boolean;
   soundEnabled: boolean;
   theme: ThemeMode;
+  themePalette: ThemePalette;
   set: <K extends keyof Omit<SettingsState, "set">>(
     key: K,
     value: SettingsState[K],
@@ -31,11 +33,17 @@ export const useSettings = create<SettingsState>()(
       notificationsEnabled: false,
       soundEnabled: true,
       theme: "system",
+      themePalette: "default",
       set: (key, value) => set({ [key]: value } as Partial<SettingsState>),
     }),
     {
       name: "tomato-settings",
-      version: 1,
+      version: 2,
+      migrate: (persisted, version) => {
+        const s = (persisted ?? {}) as Partial<SettingsState>;
+        if (version < 2 && !s.themePalette) s.themePalette = "default";
+        return s as SettingsState;
+      },
     },
   ),
 );

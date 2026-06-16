@@ -11,18 +11,31 @@ body {
   margin: 0;
   font-family: var(--font-ui);
   color: var(--foreground);
-  background: radial-gradient(
-      120% 70% at 50% -10%,
-      color-mix(in srgb, var(--accent) 9%, transparent),
-      transparent 55%
-    ),
-    var(--background);
+  background: var(--background);
+  isolation: isolate;
   min-height: 100dvh;
   transition:
     background 0.4s var(--ease-emph),
     color 0.36s var(--ease-emph);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Soft accent halo at the top of the viewport. Anchored to the viewport via
+   fixed positioning so it doesn't bleed into the lower half of long pages
+   (footer / long task list / settings). */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 70vh at 50% -10vh,
+    color-mix(in srgb, var(--accent) 9%, transparent),
+    transparent 55%
+  );
+  transition: background 0.4s var(--ease-emph);
 }
 
 .site {

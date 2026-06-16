@@ -7,6 +7,7 @@ import { SettingRow } from "@/components/settings/SettingRow";
 import { Stepper } from "@/components/settings/Stepper";
 import { Switch } from "@/components/ui/switch";
 import { ThemeRadio } from "@/components/settings/ThemeRadio";
+import { PaletteRadio } from "@/components/settings/PaletteRadio";
 import { DataActions } from "@/components/settings/DataActions";
 import { Button } from "@/components/ui/button";
 import { playChime } from "@/lib/audio";
@@ -163,6 +164,16 @@ function SettingsPage() {
         hint="System follows your OS preference."
         control={
           <ThemeRadio value={s.theme} onChange={(v) => s.set("theme", v)} />
+        }
+      />
+      <SettingRow
+        label="Palette"
+        hint="Default uses tomato red. Catppuccin swaps to Latte (light) or Mocha (dark)."
+        control={
+          <PaletteRadio
+            value={s.themePalette}
+            onChange={(v) => s.set("themePalette", v)}
+          />
         }
       />
 
