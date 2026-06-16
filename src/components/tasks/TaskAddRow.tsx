@@ -9,7 +9,7 @@ export function TaskAddRow() {
 
   return (
     <form
-      className="addrow"
+      className="mb-[18px] flex gap-3"
       onSubmit={async (e) => {
         e.preventDefault();
         const title = value.trim();
