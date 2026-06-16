@@ -21,24 +21,10 @@
   background: transparent;
   border-bottom-color: transparent;
 }
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 700;
-  font-size: 19px;
-  letter-spacing: -0.01em;
-  text-decoration: none;
-  color: inherit;
-}
-.brand svg {
-  flex: 0 0 auto;
-}
-.navlinks {
-  display: flex;
-  gap: 4px;
-  margin-left: 14px;
-}
+/* .brand, .navlinks, .navspace and .offchip are Tailwind utilities in
+   src/components/layout/*. The fullbleed-coupled surfaces below (.navlink,
+   .iconbtn) keep their semantic classes so the .site.fullbleed overrides stay
+   readable. */
 .navlink {
   padding: 9px 16px;
   border-radius: var(--radius-pill);
@@ -65,9 +51,6 @@
 .site.fullbleed .navlink.active {
   color: #fff;
 }
-.navspace {
-  flex: 1;
-}
 .iconbtn {
   width: 40px;
   height: 40px;
@@ -88,30 +71,11 @@
 .site.fullbleed .iconbtn:hover {
   background: rgba(255, 255, 255, 0.14);
 }
-.offchip {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--muted-fg);
-  padding: 5px 11px;
-  border-radius: var(--radius-pill);
-  background: var(--surface-2);
-}
 
 /* ---------- main ---------- */
-.main {
-  flex: 1 1 auto;
-  display: flex;
-  justify-content: center;
-  padding: clamp(28px, 5vh, 64px) clamp(20px, 5vw, 52px) 96px;
-}
-@media (min-width: 768px) {
-  .main {
-    padding-bottom: 64px;
-  }
-}
+/* .main is a Tailwind utility string in routes/__root.tsx. The .container
+   width constraints + .pagehead/.h1 stay semantic since every route reuses
+   them. */
 .container {
   width: 100%;
 }
@@ -492,13 +456,6 @@
   display: none;
 }
 @media (max-width: 767px) {
-  .navlinks {
-    display: none;
-  }
-  .main {
-    padding-top: clamp(16px, 2.5vh, 28px);
-    padding-bottom: 96px;
-  }
   .tabbar {
     display: flex;
     position: fixed;
@@ -571,21 +528,7 @@
   opacity: 1;
   transform: translateX(-50%) translateY(0);
 }
-.kbdhint {
-  position: fixed;
-  bottom: 14px;
-  right: 18px;
-  font-size: 12px;
-  color: var(--muted-fg);
-  font-family: var(--font-mono);
-  opacity: 0.6;
-  pointer-events: none;
-}
-@media (max-width: 767px) {
-  .kbdhint {
-    display: none;
-  }
-}
+/* .kbdhint is a Tailwind utility string in routes/__root.tsx. */
 
 /* ---------- footer ---------- */
 .footer {

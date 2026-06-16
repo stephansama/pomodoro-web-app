@@ -14,7 +14,7 @@ export function TopNav() {
   return (
     <header className="topnav">
       <Brand />
-      <nav className="navlinks" aria-label="Primary">
+      <nav className="ml-[14px] flex gap-1 max-md:hidden" aria-label="Primary">
         {LINKS.map((l) => (
           <Link
             key={l.to}
@@ -27,7 +27,7 @@ export function TopNav() {
           </Link>
         ))}
       </nav>
-      <div className="navspace" />
+      <div className="flex-1" />
       <OfflineChip />
       <ThemeToggle />
     </header>

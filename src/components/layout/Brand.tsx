@@ -2,7 +2,11 @@ import { Link } from "@tanstack/react-router";
 
 export function Brand() {
   return (
-    <Link to="/" className="brand" aria-label="Tomato — home">
+    <Link
+      to="/"
+      className="flex items-center gap-2.5 text-[19px] font-bold tracking-[-0.01em] text-inherit no-underline"
+      aria-label="Tomato — home"
+    >
       <svg
         width="24"
         height="24"
@@ -10,6 +14,7 @@ export function Brand() {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
+        className="shrink-0"
       >
         <path
           d="M13.4 6.1c0-1.5 1.4-2.5 3.5-2.3-.2 2-1.6 3.1-3.5 3"

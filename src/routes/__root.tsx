@@ -34,7 +34,7 @@ function RootShell() {
   return (
     <div className={`site${fullbleed ? " fullbleed" : ""}`}>
       <TopNav />
-      <main className="main">
+      <main className="flex flex-1 justify-center px-[clamp(20px,5vw,52px)] pt-[clamp(16px,2.5vh,28px)] pb-24 md:pt-[clamp(28px,5vh,64px)] md:pb-16">
         <Outlet />
       </main>
       <Footer />
@@ -42,7 +42,9 @@ function RootShell() {
       <Toaster />
       <ShortcutSheet open={help} onOpenChange={setHelp} />
       <InstallPrompt />
-      <div className="kbdhint">Space · S · 1·2·3 · ?</div>
+      <div className="pointer-events-none fixed bottom-3.5 right-[18px] font-mono text-xs text-(--muted-fg) opacity-60 max-md:hidden">
+        Space · S · 1·2·3 · ?
+      </div>
     </div>
   );
 }
