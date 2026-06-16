@@ -468,17 +468,11 @@
 }
 
 /* ---------- settings ---------- */
-.ssection {
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 600;
-  color: var(--muted-fg);
-  margin: 30px 0 4px;
-}
-.ssection:first-child {
-  margin-top: 0;
-}
+/* .ssection (section heading) is a Tailwind utility string in
+   routes/settings.tsx; the .stepper is utilities in settings/Stepper.tsx.
+   .srow keeps its semantic class for the .srow + .srow divider, .switch
+   because .switch.on is accent-driven (retints per phase), and .radio
+   because it's shared by ThemeRadio + PaletteRadio. */
 .srow {
   display: flex;
   align-items: center;
@@ -497,43 +491,6 @@
   font-size: 14px;
   color: var(--muted-fg);
   margin-top: 3px;
-}
-.stepper {
-  display: flex;
-  align-items: center;
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
-  flex: 0 0 auto;
-}
-.stepper b {
-  font-family: var(--font-mono);
-  font-size: 17px;
-  font-weight: 600;
-  padding: 10px 0;
-  width: 58px;
-  text-align: center;
-}
-.stepper button {
-  width: 46px;
-  padding: 10px 0;
-  color: var(--muted-fg);
-  font-size: 21px;
-  transition: 0.15s;
-}
-.stepper button:hover {
-  background: var(--surface-2);
-  color: var(--foreground);
-}
-.stepper button:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-.stepper button:first-child {
-  border-right: 1.5px solid var(--border);
-}
-.stepper button:last-child {
-  border-left: 1.5px solid var(--border);
 }
 .switch {
   width: 54px;

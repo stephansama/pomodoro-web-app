@@ -14,6 +14,9 @@ import { playChime } from "@/lib/audio";
 
 export const Route = createFileRoute("/settings")({ component: SettingsPage });
 
+const sectionClass =
+  "mt-[30px] mb-1 text-xs font-semibold uppercase tracking-[0.08em] text-(--muted-fg)";
+
 function SettingsPage() {
   const s = useSettings();
   const { supported, permission, request } = useNotifications();
@@ -33,7 +36,7 @@ function SettingsPage() {
         <h1 className="h1">Settings</h1>
       </div>
 
-      <div className="ssection">Timer durations</div>
+      <div className={sectionClass}>Timer durations</div>
       <SettingRow
         label="Focus"
         hint="Minutes per focus block."
@@ -87,7 +90,7 @@ function SettingsPage() {
         }
       />
 
-      <div className="ssection">Auto-start</div>
+      <div className={sectionClass}>Auto-start</div>
       <SettingRow
         label="Auto-start breaks"
         hint="Start the break automatically when a focus ends."
@@ -111,7 +114,7 @@ function SettingsPage() {
         }
       />
 
-      <div className="ssection">Notifications &amp; sound</div>
+      <div className={sectionClass}>Notifications &amp; sound</div>
       <SettingRow
         label="Browser notifications"
         hint={
@@ -158,7 +161,7 @@ function SettingsPage() {
         }
       />
 
-      <div className="ssection">Appearance</div>
+      <div className={sectionClass}>Appearance</div>
       <SettingRow
         label="Theme"
         hint="System follows your OS preference."
@@ -177,7 +180,7 @@ function SettingsPage() {
         }
       />
 
-      <div className="ssection">Data</div>
+      <div className={sectionClass}>Data</div>
       <SettingRow
         label="Your tasks &amp; sessions"
         hint="Stored locally in your browser. Export anytime."
